@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Over Services - Sanskriti Srivastava</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ======================================== */
+        /* === THEME: TEAL, WHITE, & GOLD === */
+        /* ======================================== */
+        :root {
+            --bg-white: #ffffff;
+            --bg-light-grey: #f8f9fa;
+            --text-dark: #212529;
+            --text-grey: #6c757d;
+            --accent-teal: #1abc9c;
+            --accent-teal-darker: #16a085;
+            --accent-gold: #cda434;
+            --border-light: #e9ecef;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            background-color: var(--bg-white);
+            color: var(--text-grey);
+        }
+        
+        /* ======================================== */
+        /* === HEADER & NAVIGATION === */
+        /* ======================================== */
+        header {
+            position: sticky; top: 0; z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.07);
+        }
+        .main-nav-container { max-width: 1200px; margin: 0 auto; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; height: 60px; }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--accent-teal); text-decoration: none; }
+        .back-to-home { text-decoration: none; color: var(--text-dark); font-weight: 500; transition: color 0.3s ease; }
+        .back-to-home:hover { color: var(--accent-teal); }
+
+        .page-header {
+            text-align: center; padding: 4rem 2rem 3rem; background-color: var(--bg-white);
+            border-bottom: 1px solid var(--border-light);
+        }
+        .page-header h1 { font-size: 3rem; color: var(--accent-gold); }
+        .page-header p { font-size: 1.2rem; max-width: 700px; margin: 1rem auto 0; color: var(--text-grey); }
+
+        .sticky-nav {
+            position: sticky; top: 60px; background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px); z-index: 999; padding: 1rem 0;
+            border-bottom: 1px solid var(--border-light); box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+        .sticky-nav-container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
+        .sticky-nav a { text-decoration: none; color: var(--text-grey); font-weight: 600; transition: color 0.3s ease, border-bottom-color 0.3s ease; padding-bottom: 0.5rem; border-bottom: 2px solid transparent; }
+        .sticky-nav a:hover { color: var(--text-dark); }
+        .sticky-nav a.active { color: var(--accent-teal); border-bottom-color: var(--accent-teal); }
+
+        /* ======================================== */
+        /* === CONTENT SECTIONS === */
+        /* ======================================== */
+        .content-section { padding: 4rem 0; max-width: 1200px; margin: 0 auto; border-bottom: 1px solid var(--border-light); }
+        .content-section:last-of-type { border-bottom: none; }
+        
+        .section-header { text-align: center; margin-bottom: 3rem; padding: 0 2rem; }
+        .section-header h2 { font-size: 2.5rem; color: var(--text-dark); margin-bottom: 0.5rem; }
+        .section-header p { color: var(--text-grey); max-width: 600px; margin: 0 auto; }
+
+        .services-carousel-wrapper {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+        }
+        .services-carousel { 
+            display: flex; 
+            overflow-x: auto; 
+            gap: 1.5rem; 
+            padding: 1rem 2rem; 
+            scroll-snap-type: x mandatory; 
+            scrollbar-width: none; 
+            -ms-overflow-style: none;
+            width: 100%;
+        }
+        .services-carousel::-webkit-scrollbar { display: none; }
+        
+        .carousel-btn {
+            background-color: var(--bg-white); border: 1px solid var(--border-light); color: var(--text-grey);
+            width: 45px; height: 45px; border-radius: 50%; cursor: pointer; font-size: 1.2rem;
+            display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            position: absolute;
+            z-index: 10;
+        }
+        .carousel-btn:hover { background-color: var(--accent-teal); color: white; transform: scale(1.1); }
+        .carousel-btn.left { left: -10px; }
+        .carousel-btn.right { right: -10px; }
+        
+        .service-tile {
+            flex: 0 0 300px; background: var(--bg-white); border: 1px solid var(--border-light);
+            border-radius: 16px; padding: 2rem; box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            scroll-snap-align: start; text-align: left;
+            display: flex; flex-direction: column;
+        }
+        .service-tile h3 { color: var(--text-dark); font-size: 1.2rem; margin-bottom: 0.5rem; }
+        .service-tile p { font-size: 0.95rem; flex-grow: 1; }
+        .language-label {
+            background-color: var(--bg-light-grey);
+            color: var(--text-grey);
+            padding: 0.25rem 0.6rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        .play-sample-btn {
+            margin-top: 1.5rem;
+            text-decoration: none;
+            color: var(--accent-teal);
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        .play-sample-btn:hover { color: var(--accent-teal-darker); }
+        .play-sample-btn .fa-play-circle { margin-right: 0.5rem; }
+
+        /* ======================================== */
+        /* === SAMPLES GALLERY SECTION === */
+        /* ======================================== */
+        #samples-gallery { background-color: var(--bg-white); }
+        .samples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            padding: 0 2rem;
+        }
+        .audio-sample-box {
+            background: var(--bg-light-grey);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-light);
+        }
+        .audio-sample-box h3 {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        audio {
+            width: 100%;
+            height: 40px;
+        }
+        /* Custom audio player styles */
+        audio::-webkit-media-controls-panel {
+            background-color: var(--bg-light-grey);
+        }
+        audio::-webkit-media-controls-play-button,
+        audio::-webkit-media-controls-current-time-display,
+        audio::-webkit-media-controls-time-remaining-display,
+        audio::-webkit-media-controls-mute-button {
+            color: var(--accent-teal);
+            filter: brightness(1.2);
+        }
+        audio::-webkit-media-controls-volume-slider,
+        audio::-webkit-media-controls-timeline {
+            border-radius: 25px;
+            background-color: var(--border-light);
+        }
+
+        /* ======================================== */
+        /* === PROCESS SECTION === */
+        /* ======================================== */
+        #process { background-color: var(--bg-light-grey); }
+        .process-flow {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        .process-step { text-align: center; }
+        .process-step .icon-wrapper {
+            width: 80px; height: 80px;
+            background-color: var(--bg-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 10px 25px rgba(26, 188, 156, 0.1);
+            font-size: 2rem;
+            color: var(--accent-teal);
+            position: relative;
+        }
+        .process-step .step-number {
+            position: absolute;
+            top: -10px; right: -10px;
+            background-color: var(--accent-gold);
+            color: white;
+            width: 30px; height: 30px;
+            border-radius: 50%;
+            font-size: 1rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid white;
+        }
+        .process-step h3 { font-size: 1.3rem; color: var(--text-dark); margin-bottom: 0.5rem; }
+
+        /* ======================================== */
+        /* === MODAL & FOOTER === */
+        /* ======================================== */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(33, 37, 41, 0.7); backdrop-filter: blur(5px); display: flex; align-items: center; justify-content: center; z-index: 2000; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+        .modal-content { background: var(--bg-white); padding: 2.5rem; border-radius: 16px; width: 90%; max-width: 500px; max-height: 90vh; overflow-y: auto; position: relative; transform: scale(0.95); transition: transform 0.3s ease; }
+        .modal-overlay.active .modal-content { transform: scale(1); }
+        .modal-close { position: absolute; top: 1rem; right: 1.5rem; font-size: 2rem; color: var(--text-grey); cursor: pointer; }
+        .contact-form .form-group { margin-bottom: 1rem; }
+        .contact-form label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-dark); }
+        .contact-form input, .contact-form textarea { width: 100%; padding: 0.75rem; border: 2px solid var(--border-light); border-radius: 8px; font-size: 1rem; }
+        .contact-form button { width: 100%; padding: 0.85rem; background: var(--accent-teal); color: white; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 600; cursor: pointer; }
+        .form-success-message { text-align: center; padding: 2rem; }
+
+        footer { text-align: center; background-color: var(--bg-light-grey); padding: 4rem 2rem; }
+        footer h2 { color: var(--text-dark); font-size: 2.2rem; margin-bottom: 1rem; }
+        footer p { max-width: 600px; margin: 0 auto 2rem; }
+        .cta-button { display: inline-block; background: var(--accent-gold); color: var(--bg-white); text-decoration: none; padding: 1rem 2.5rem; border-radius: 12px; font-size: 1.1rem; font-weight: 600; border: none; cursor: pointer; }
+        
+        @media (max-width: 768px) {
+            .carousel-btn { display: none; } 
+            .services-carousel-wrapper { padding: 0; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <div class="main-nav-container">
+                <a href="landingpage.html" class="logo">Sanskriti Srivastava</a>
+                <a href="portfolio.html#freelance" class="back-to-home"><i class="fas fa-arrow-left"></i> Back to Home</a>
+            </div>
+        </nav>
+        <nav class="sticky-nav">
+            <div class="sticky-nav-container">
+                <a href="#what-i-offer" class="active">What I Offer</a>
+                <a href="#samples-gallery">Samples</a>
+                <a href="#process">Process</a>
+                <a href="#contact">Get in Touch</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="page-header">
+            <h1>Voice Over Services</h1>
+            <p>Bringing your words to life with a clear, engaging, and professional voice. Perfect for commercials, explainers, narration, and more.</p>
+        </div>
+
+        <section class="content-section" id="what-i-offer">
+            <div class="section-header">
+                <h2>What I Offer</h2>
+            </div>
+            <div class="services-carousel-wrapper">
+                <button class="carousel-btn left" id="scroll-left-btn"><i class="fas fa-chevron-left"></i></button>
+                <div class="services-carousel" id="vo-categories-carousel">
+                    <div class="service-tile">
+                        <div class="language-label">English (Indian Neutral) & Hindi</div>
+                        <h3>Commercial Voice Overs</h3>
+                        <p>For brand ads, YouTube promotions, Instagram reels, and radio spots. Energetic, crisp, brand-focused delivery.</p>
+                        <a href="#" class="play-sample-btn"><i class="fas fa-play-circle"></i> Play Sample</a>
+                    </div>
+                    <div class="service-tile">
+                        <div class="language-label">English (Neutral)</div>
+                        <h3>Corporate / Explainer Videos</h3>
+                        <p>Calm, confident narration for company overviews, training, and explainer videos. Professional tone with clear articulation.</p>
+                        <a href="#" class="play-sample-btn"><i class="fas fa-play-circle"></i> Play Sample</a>
+                    </div>
+                    <div class="service-tile">
+                        <div class="language-label">English & Hindi</div>
+                        <h3>Podcast / Intro Voice</h3>
+                        <p>Custom intros, outros, and transitions for podcasts or YouTube series. Warm, relatable, and steady.</p>
+                        <a href="#" class="play-sample-btn"><i class="fas fa-play-circle"></i> Play Sample</a>
+                    </div>
+                    <div class="service-tile">
+                        <div class="language-label">English (US Tone)</div>
+                        <h3>Narration (Stories / Docs)</h3>
+                        <p>Engaging storytelling for documentaries or audio stories. Emotional, slow-paced, soothing delivery.</p>
+                        <a href="#" class="play-sample-btn"><i class="fas fa-play-circle"></i> Play Sample</a>
+                    </div>
+                    <div class="service-tile">
+                        <div class="language-label">English (Indian Neutral)</div>
+                        <h3>E-learning / Educational</h3>
+                        <p>Clear, simple, and instructional tone for tutorials or courses. Crisp pronunciation with a slow tempo.</p>
+                        <a href="#" class="play-sample-btn"><i class="fas fa-play-circle"></i> Play Sample</a>
+                    </div>
+                    <div class="service-tile">
+                        <div class="language-label">Hindi & English</div>
+                        <h3>IVR / On-hold Messages</h3>
+                        <p>Friendly and polite tone for corporate call systems. A polite, neutral, and easy-going voice.</p>
+                        <a href="#" class="play-sample-btn"><i class="fas fa-play-circle"></i> Play Sample</a>
+                    </div>
+                </div>
+                <button class="carousel-btn right" id="scroll-right-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </section>
+
+        <section class="content-section" id="samples-gallery">
+            <div class="section-header">
+                <h2>Samples Gallery</h2>
+                <p>Hear my voice in action. Explore a selection of demos across different styles.</p>
+            </div>
+            <div class="samples-grid">
+                <div class="audio-sample-box">
+                    <h3>🎧 Commercial Sample (0:27)</h3>
+                    <audio controls src=""></audio> </div>
+                <div class="audio-sample-box">
+                    <h3>🎧 Explainer Video Sample (0:45)</h3>
+                    <audio controls src=""></audio>
+                </div>
+                <div class="audio-sample-box">
+                    <h3>🎧 E-Learning Sample (0:32)</h3>
+                    <audio controls src=""></audio>
+                </div>
+                 <div class="audio-sample-box">
+                    <h3>🎧 IVR Sample (0:15)</h3>
+                    <audio controls src=""></audio>
+                </div>
+                <div class="audio-sample-box">
+                    <h3>🎧 Hindi Narration (1:12)</h3>
+                    <audio controls src=""></audio>
+                </div>
+                <div class="audio-sample-box">
+                    <h3>🎧 Podcast Intro (0:18)</h3>
+                    <audio controls src=""></audio>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="content-section" id="process">
+            <div class="section-header">
+                <h2>How It Works</h2>
+                <p>A simple, streamlined process to get your professional voice over, fast.</p>
+            </div>
+            <div class="process-flow">
+                <div class="process-step">
+                    <div class="icon-wrapper"><span class="step-number">1</span><i class="fas fa-file-alt"></i></div>
+                    <h3>Script Review</h3>
+                    <p>You share your script or idea, and we discuss the project requirements.</p>
+                </div>
+                <div class="process-step">
+                    <div class="icon-wrapper"><span class="step-number">2</span><i class="fas fa-microphone-alt"></i></div>
+                    <h3>Tone Selection</h3>
+                    <p>We finalize the exact tone, pace, and delivery style that fits your brand.</p>
+                </div>
+                <div class="process-step">
+                    <div class="icon-wrapper"><span class="step-number">3</span><i class="fas fa-wave-square"></i></div>
+                    <h3>Recording & Editing</h3>
+                    <p>I record in a professional setup and edit the audio for premium quality.</p>
+                </div>
+                <div class="process-step">
+                    <div class="icon-wrapper"><span class="step-number">4</span><i class="fas fa-paper-plane"></i></div>
+                    <h3>Delivery</h3>
+                    <p>The final MP3/WAV file is sent, ready for use. Revisions are available if needed.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <div class="modal-overlay" id="contact-modal">
+        <div class="modal-content">
+             <span class="modal-close">&times;</span>
+             <h2>Get in Touch</h2>
+             <div>
+                <form id="contact-form" class="contact-form">
+                    <div class="form-group"><label for="contact-name">Name</label><input type="text" id="contact-name" name="name" required></div>
+                    <div class="form-group"><label for="contact-phone">Phone</label><input type="tel" id="contact-phone" name="phone" required></div>
+                    <div class="form-group"><label for="contact-email">Email</label><input type="email" id="contact-email" name="email" required></div>
+                    <div class="form-group"><label for="contact-subject">Subject</label><input type="text" id="contact-subject" name="subject" required></div>
+                    <div class="form-group"><label for="contact-message">Message</label><textarea id="contact-message" name="message" required></textarea></div>
+                    <button type="submit">Send Message</button>
+                </form>
+                <div id="contact-form-success" class="form-success-message" style="display: none;">
+                    <h3>Thank you!</h3>
+                    <p>Your message has been sent. I will get back to you shortly.</p>
+                </div>
+             </div>
+        </div>
+    </div>
+
+    <footer id="contact">
+        <h2>Ready to Add a Voice to Your Project?</h2>
+        <p>Let's discuss your script and find the perfect tone to make your message resonate.</p>
+        <button class="cta-button" id="footer-contact-btn">Start the Conversation</button>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // === SERVICES CAROUSEL SCROLL LOGIC ===
+            const voCarousel = document.getElementById('vo-categories-carousel');
+            const scrollLeftBtn = document.getElementById('scroll-left-btn');
+            const scrollRightBtn = document.getElementById('scroll-right-btn');
+            
+            if (voCarousel) {
+                const scrollAmount = 320; 
+                scrollLeftBtn.addEventListener('click', () => {
+                    voCarousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                });
+                scrollRightBtn.addEventListener('click', () => {
+                    voCarousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                });
+            }
+
+            // === CONTACT MODAL LOGIC ===
+            const footerContactBtn = document.getElementById('footer-contact-btn');
+            const contactModal = document.getElementById('contact-modal');
+            const contactForm = document.getElementById('contact-form');
+            const contactFormSuccess = document.getElementById('contact-form-success');
+
+            footerContactBtn.addEventListener('click', () => {
+                contactForm.reset();
+                contactForm.style.display = 'block';
+                contactFormSuccess.style.display = 'none';
+                contactModal.classList.add('active');
+            });
+
+            // === FORM SUBMISSION LOGIC ===
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbzRzn14h2M-yAP-5Pkqttbiedf0z0inaHOF05ZutqLMtf3NkW0R3G8-TzvEexycEggB/exec'; // Replace with your script URL
+
+            contactForm.addEventListener('submit', e => {
+                e.preventDefault();
+                const submitButton = contactForm.querySelector('button[type="submit"]');
+                submitButton.disabled = true;
+                submitButton.textContent = 'Sending...';
+
+                fetch(scriptURL, { method: 'POST', body: new FormData(contactForm)})
+                    .then(response => {
+                        console.log('Success!', response);
+                        contactForm.style.display = 'none';
+                        contactFormSuccess.style.display = 'block';
+                        submitButton.disabled = false;
+                        submitButton.textContent = 'Send Message';
+                    })
+                    .catch(error => {
+                        console.error('Error!', error.message);
+                        alert('An error occurred. Please try again.');
+                        submitButton.disabled = false;
+                        submitButton.textContent = 'Send Message';
+                    });
+            });
+
+            // === GENERAL MODAL CLOSING LOGIC ===
+            const allModals = document.querySelectorAll('.modal-overlay');
+            const allCloseBtns = document.querySelectorAll('.modal-close');
+            const closeModal = () => allModals.forEach(modal => modal.classList.remove('active'));
+            allCloseBtns.forEach(btn => btn.addEventListener('click', closeModal));
+            allModals.forEach(modal => modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); }));
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+            // === STICKY NAV ACTIVE STATE LOGIC ===
+            const navLinks = document.querySelectorAll('.sticky-nav a');
+            const sections = document.querySelectorAll('.content-section, #contact');
+            const observerOptions = { root: null, rootMargin: "-100px 0px -50% 0px" };
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const activeId = entry.target.id;
+                        navLinks.forEach(link => {
+                            link.classList.toggle('active', link.getAttribute('href') === `#${activeId}`);
+                        });
+                    }
+                });
+            }, observerOptions);
+            sections.forEach(section => observer.observe(section));
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Writing Services - Your Name</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ======================================== */
+        /* === THEME: TEAL, WHITE, & GOLD === */
+        /* ======================================== */
+        :root {
+            --bg-white: #ffffff;
+            --bg-light-grey: #f8f9fa;
+            --text-dark: #212529;
+            --text-grey: #6c757d;
+            --accent-teal: #1abc9c;
+            --accent-teal-darker: #16a085;
+            --accent-gold: #cda434;
+            --border-light: #e9ecef;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            background-color: var(--bg-white);
+            color: var(--text-grey);
+        }
+        
+        /* ======================================== */
+        /* === HEADER & NAVIGATION === */
+        /* ======================================== */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.07);
+        }
+        .main-nav {
+            padding: 1rem 0;
+        }
+        .main-nav-container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; height: 56px; }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--accent-teal); text-decoration: none; }
+        .back-to-home { text-decoration: none; color: var(--text-dark); font-weight: 500; transition: color 0.3s ease; }
+        .back-to-home:hover { color: var(--accent-teal); }
+
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            padding: 4rem 2rem 3rem;
+            background-color: var(--bg-white);
+            border-bottom: 1px solid var(--border-light);
+        }
+        .page-header h1 {
+            font-size: 3rem;
+            color: var(--accent-gold);
+        }
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 1rem auto 0;
+            color: var(--text-grey);
+        }
+
+        /* NEW: Sticky Sub-Navigation */
+        .sticky-nav {
+            position: sticky;
+            top: 56px; /* Height of the main nav */
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 999;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-light);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+        .sticky-nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .sticky-nav a {
+            text-decoration: none;
+            color: var(--text-grey);
+            font-weight: 600;
+            transition: color 0.3s ease, border-bottom-color 0.3s ease;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid transparent;
+        }
+        .sticky-nav a:hover {
+            color: var(--text-dark);
+        }
+        .sticky-nav a.active {
+            color: var(--accent-teal);
+            border-bottom-color: var(--accent-teal);
+        }
+
+        /* ======================================== */
+        /* === PORTFOLIO SECTION STYLES === */
+        /* ======================================== */
+        .content-section {
+            padding: 4rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .content-section:last-of-type {
+            border-bottom: none;
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding: 0 2rem;
+        }
+
+        .section-title-group {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .section-title-group i {
+            font-size: 2.2rem;
+            color: var(--accent-teal);
+        }
+        .section-title-group h2 {
+            font-size: 2rem;
+            color: var(--text-dark);
+            margin: 0;
+        }
+        .section-subtitle {
+            font-size: 1rem;
+            color: var(--text-grey);
+            margin: 0;
+        }
+
+        .book-service-btn {
+            background: var(--accent-gold);
+            color: var(--bg-white);
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        .book-service-btn:hover {
+            background: #b38f2c;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Horizontal Scrolling Carousel */
+        .portfolio-carousel {
+            display: flex;
+            overflow-x: auto;
+            gap: 1.5rem;
+            padding: 1rem 2rem;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .portfolio-carousel::-webkit-scrollbar {
+            display: none;
+        }
+        
+        /* Portfolio Cards */
+        .portfolio-card {
+            flex: 0 0 320px;
+            background: var(--bg-white);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            scroll-snap-align: start;
+        }
+        .portfolio-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .portfolio-card h3 {
+            color: var(--text-dark);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        .portfolio-card p.card-excerpt {
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+        .card-client {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--accent-teal-darker);
+        }
+
+        /* ======================================== */
+        /* === MODAL (POPUP) STYLES === */
+        /* ======================================== */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(33, 37, 41, 0.7);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: var(--bg-white);
+            padding: 2.5rem;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 700px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+        }
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 2rem;
+            color: var(--text-grey);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .modal-close:hover {
+            color: var(--text-dark);
+        }
+
+        .modal-content h2 {
+            font-size: 2rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+        .modal-body {
+            white-space: pre-wrap;
+            margin-bottom: 2rem;
+            border-left: 3px solid var(--accent-teal);
+            padding-left: 1.5rem;
+        }
+        .modal-footer {
+            border-top: 1px solid var(--border-light);
+            padding-top: 1.5rem;
+        }
+        .modal-section { margin-bottom: 1.5rem; }
+        .modal-section h4 { color: var(--accent-gold); margin-bottom: 0.5rem; }
+        .modal-impact { display: flex; align-items: center; gap: 1rem; background: var(--bg-light-grey); padding: 1rem; border-radius: 8px; }
+        .modal-impact i { font-size: 1.5rem; color: var(--accent-teal); }
+        .modal-testimonial { font-style: italic; }
+
+        /* Booking Form Styles */
+        .booking-form .form-group { margin-bottom: 1rem; }
+        .booking-form label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-dark); }
+        .booking-form input, .booking-form textarea { width: 100%; padding: 0.75rem; border: 2px solid var(--border-light); border-radius: 8px; font-size: 1rem; }
+        .booking-form textarea { resize: vertical; min-height: 120px; }
+        .booking-form button { width: 100%; padding: 0.75rem; background: var(--accent-teal); color: white; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: background 0.3s ease; }
+        .booking-form button:hover { background: var(--accent-teal-darker); }
+        .form-success-message { text-align: center; padding: 2rem; }
+
+        /* ======================================== */
+        /* === FOOTER & CTA === */
+        /* ======================================== */
+        .cta-section { text-align: center; background-color: var(--bg-light-grey); padding: 4rem 2rem; }
+        .cta-section h2 { color: var(--text-dark); font-size: 2.2rem; margin-bottom: 1rem; }
+        .cta-section p { max-width: 600px; margin: 0 auto 2rem; }
+        .cta-button { display: inline-block; background: var(--accent-gold); color: var(--bg-white); text-decoration: none; padding: 1rem 2.5rem; border-radius: 12px; font-size: 1.1rem; font-weight: 600; transition: all 0.3s ease; }
+        .cta-button:hover { background: #b38f2c; transform: translateY(-3px); }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 2.5rem; }
+            .section-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+            .section-title-group h2 { font-size: 1.8rem; }
+            .portfolio-card { flex: 0 0 280px; }
+            .sticky-nav-container { justify-content: flex-start; overflow-x: auto; scrollbar-width: none; }
+            .sticky-nav-container::-webkit-scrollbar { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <div class="main-nav-container">
+                <a href="portfolio.html" class="logo">Your Name</a>
+                <a href="portfolio.html#freelance" class="back-to-home"><i class="fas fa-arrow-left"></i> Back to Home</a>
+            </div>
+        </nav>
+
+        <nav class="sticky-nav">
+            <div class="sticky-nav-container">
+                <a href="#script-writing" class="active">Script Writing</a>
+                <a href="#newsletters">Newsletters</a>
+                <a href="#technical-writing">Technical Writing</a>
+                <a href="#blog-writing">Blog Writing</a>
+                <a href="#article-writing">Article Writing</a>
+                <a href="#social-media">Social Media</a>
+            </div>
+        </nav>
+        
+    </header>
+
+    <main>
+        <div class="page-header">
+            <h1>Content Writing Services</h1>
+            <p>Crafting compelling narratives that engage audiences, build brands, and drive results. Explore my work across various formats and industries.</p>
+        </div>
+
+        
+
+        <section class="content-section" id="script-writing">
+            <div class="section-header">
+                <div class="section-title-group">
+                    <i class="fas fa-clapperboard"></i>
+                    <div>
+                        <h2>Script Writing</h2>
+                        <p class="section-subtitle">“Compelling Scripts for Videos, Reels & Shows”</p>
+                    </div>
+                </div>
+                <button class="book-service-btn" data-service="Script Writing">Book Service</button>
+            </div>
+            <div class="portfolio-carousel">
+                <div class="portfolio-card" data-title="YouTube Explainer Video Script" data-client="HealthHub" data-content="Wrote a 3-minute script for an animated explainer video titled 'The Science of Sleep'." data-impact="Video achieved over 500,000 views and a 30% increase in channel subscribers." data-testimonial='"An amazing scriptwriter who understood our brand voice perfectly!" - Content Lead, HealthHub'>
+                    <h3>Explainer Video Script</h3>
+                    <p class="card-excerpt">A 3-minute animated video script on 'The Science of Sleep'...</p>
+                    <p class="card-client">Client: HealthHub (YouTube)</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section" id="newsletters">
+            <div class="section-header">
+                <div class="section-title-group">
+                    <i class="fas fa-envelope-open-text"></i>
+                    <div>
+                        <h2>Newsletters</h2>
+                        <p class="section-subtitle">“Engaging, Voice-Driven Newsletters”</p>
+                    </div>
+                </div>
+                <button class="book-service-btn" data-service="Newsletters">Book Service</button>
+            </div>
+            <div class="portfolio-carousel">
+                <div class="portfolio-card" data-title="Weekly Tech Industry Newsletter" data-client="Tech Weekly" data-content="Curated and wrote the content for 'Tech Weekly', a newsletter for industry professionals." data-impact="Grew subscriber base by 10,000 in 6 months and maintained a 45% open rate." data-testimonial='"The quality of writing is consistently excellent." - Editor, Tech Weekly'>
+                    <h3>Industry Newsletter</h3>
+                    <p class="card-excerpt">Weekly editorial and curation for a tech industry newsletter...</p>
+                    <p class="card-client">Client: Tech Weekly</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section" id="technical-writing">
+            <div class="section-header">
+                <div class="section-title-group">
+                    <i class="fas fa-cogs"></i>
+                     <div>
+                        <h2>Technical Writing</h2>
+                        <p class="section-subtitle">“Clear, Accurate & User-Focused Documentation”</p>
+                    </div>
+                </div>
+                <button class="book-service-btn" data-service="Technical Writing">Book Service</button>
+            </div>
+            <div class="portfolio-carousel">
+                <div class="portfolio-card" data-title="API Documentation for FinTech Platform" data-client="PayCore Solutions" data-content="Developed comprehensive API documentation for PayCore's new payment gateway." data-impact="Reduced developer onboarding time by 40% and support tickets by 60%." data-testimonial='"The new documentation is a game-changer." - Head of Engineering, PayCore'>
+                    <h3>API Documentation</h3>
+                    <p class="card-excerpt">Complete API documentation for a new FinTech payment gateway...</p>
+                    <p class="card-client">Client: PayCore Solutions</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section" id="blog-writing">
+            <div class="section-header">
+                <div class="section-title-group">
+                    <i class="fas fa-blog"></i>
+                    <div>
+                        <h2>Blog Writing</h2>
+                        <p class="section-subtitle">“SEO-Driven, Insight-Packed Blog Posts”</p>
+                    </div>
+                </div>
+                <button class="book-service-btn" data-service="Blog Writing">Book Service</button>
+            </div>
+            <div class="portfolio-carousel">
+                 <div class="portfolio-card" data-title="SEO-Optimized Blog Post" data-client="TravelWise" data-content="Wrote a 2,500-word blog post titled 'The Ultimate Guide to Sustainable Travel in 2025'." data-impact="Ranked on the first page of Google, driving a 200% increase in organic traffic." data-testimonial='"An SEO wizard and a fantastic writer." - SEO Manager, TravelWise'>
+                    <h3>SEO-Optimized Blog Post</h3>
+                    <p class="card-excerpt">A long-form, keyword-optimized guide to sustainable travel...</p>
+                    <p class="card-client">Client: TravelWise</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section" id="article-writing">
+            <div class="section-header">
+                <div class="section-title-group">
+                    <i class="fas fa-newspaper"></i>
+                    <div>
+                        <h2>Article Writing</h2>
+                        <p class="section-subtitle">“Research-Based Articles & Thought Leadership”</p>
+                    </div>
+                </div>
+                <button class="book-service-btn" data-service="Article Writing">Book Service</button>
+            </div>
+             <div class="portfolio-carousel">
+                 <div class="portfolio-card" data-title="Thought Leadership Article" data-client="Future of Work Magazine" data-content="Authored a feature article on the impact of AI on creative industries." data-impact="Featured on the magazine's homepage and shared by 200+ industry professionals on LinkedIn." data-testimonial='"A well-researched and brilliantly written piece that sparked huge conversation." - Editor-in-Chief'>
+                    <h3>AI & The Creative Industry</h3>
+                    <p class="card-excerpt">A feature article for an online magazine about the impact of AI...</p>
+                    <p class="card-client">Client: Future of Work Magazine</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section" id="social-media">
+            <div class="section-header">
+                <div class="section-title-group">
+                    <i class="fas fa-hashtag"></i>
+                     <div>
+                        <h2>Social Media Captions</h2>
+                        <p class="section-subtitle">“Brand-Aligned Captions & Micro-Content”</p>
+                    </div>
+                </div>
+                <button class="book-service-btn" data-service="Social Media Captions">Book Service</button>
+            </div>
+            <div class="portfolio-carousel">
+                <div class="portfolio-card" data-title="LinkedIn Branding Content" data-client="Growth Partners LLC" data-content="Developed a content strategy and wrote a month's worth of LinkedIn posts for the CEO of a B2B consultancy." data-impact="Increased profile views by 80% and generated 5 high-quality inbound leads." data-testimonial='"Completely transformed my LinkedIn presence." - CEO, Growth Partners LLC'>
+                    <h3>LinkedIn Branding Content</h3>
+                    <p class="card-excerpt">A month-long content calendar for a B2B consulting CEO...</p>
+                    <p class="card-client">Client: Growth Partners LLC</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal-overlay" id="portfolio-modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2 id="modal-title"></h2>
+            <div class="modal-body" id="modal-body-content"></div>
+            <div class="modal-footer">
+                <div class="modal-section"><h4>Impact</h4><div class="modal-impact"><i class="fas fa-chart-line"></i><span id="modal-impact"></span></div></div>
+                <div class="modal-section"><h4>Client</h4><p id="modal-client"></p></div>
+                <div class="modal-section"><h4>Testimonial</h4><p class="modal-testimonial" id="modal-testimonial"></p></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="booking-modal">
+        <div class="modal-content">
+             <span class="modal-close">&times;</span>
+             <h2>Book a Service</h2>
+             <div id="booking-modal-content">
+                <form id="booking-form" class="booking-form">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                     <div class="form-group">
+                        <label for="phone">Phone Number (Optional)</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Service Interested In</label>
+                        <input type="text" id="booking-service-input" name="service" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Provide a brief message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit">Send</button>
+                </form>
+                <div id="form-success" class="form-success-message" style="display: none;">
+                    <h3>Thank you for showing interest!</h3>
+                    <p>I will reach out to you within 24 hours to discuss further details.</p>
+                </div>
+             </div>
+        </div>
+    </div>
+
+    <footer>
+        <section class="cta-section">
+            <h2>Ready to tell your story?</h2>
+            <p>Let's collaborate to create content that captivates your audience and achieves your goals.</p>
+            <a href="portfolio.html#contact" class="cta-button">Get in Touch</a>
+        </section>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // === PORTFOLIO MODAL LOGIC (No changes here) ===
+            const portfolioCards = document.querySelectorAll('.portfolio-card');
+            const portfolioModal = document.getElementById('portfolio-modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalBody = document.getElementById('modal-body-content');
+            const modalImpact = document.getElementById('modal-impact');
+            const modalClient = document.getElementById('modal-client');
+            const modalTestimonial = document.getElementById('modal-testimonial');
+
+            portfolioCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    modalTitle.textContent = card.dataset.title;
+                    modalBody.textContent = card.dataset.content;
+                    modalImpact.textContent = card.dataset.impact;
+                    modalClient.textContent = card.dataset.client;
+                    modalTestimonial.textContent = `"${card.dataset.testimonial}"`;
+                    portfolioModal.classList.add('active');
+                });
+            });
+
+            // === BOOKING MODAL LOGIC (No changes here) ===
+            const bookingBtns = document.querySelectorAll('.book-service-btn');
+            const bookingModal = document.getElementById('booking-modal');
+            const bookingServiceInput = document.getElementById('booking-service-input');
+            const formSuccessMessage = document.getElementById('form-success');
+            
+            bookingBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const serviceName = btn.dataset.service;
+                    bookingForm.reset(); 
+                    bookingServiceInput.value = serviceName; 
+                    bookingForm.style.display = 'block';
+                    formSuccessMessage.style.display = 'none';
+                    bookingModal.classList.add('active');
+                });
+            });
+
+            // === UPDATED FORM SUBMISSION LOGIC ===
+            const bookingForm = document.getElementById('booking-form');
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbzRzn14h2M-yAP-5Pkqttbiedf0z0inaHOF05ZutqLMtf3NkW0R3G8-TzvEexycEggB/exec';
+
+            bookingForm.addEventListener('submit', e => {
+                e.preventDefault(); // Prevents the default form submission behavior
+                const submitButton = bookingForm.querySelector('button[type="submit"]');
+                submitButton.disabled = true; // Disable button to prevent multiple submissions
+                submitButton.textContent = 'Sending...';
+
+                fetch(scriptURL, { method: 'POST', body: new FormData(bookingForm)})
+                    .then(response => {
+                        console.log('Success!', response);
+                        bookingForm.style.display = 'none'; // Hide the form
+                        formSuccessMessage.style.display = 'block'; // Show success message
+                        submitButton.disabled = false; // Re-enable button
+                        submitButton.textContent = 'Send';
+                    })
+                    .catch(error => {
+                        console.error('Error!', error.message);
+                        alert('An error occurred. Please try again.'); // Show an error alert
+                        submitButton.disabled = false; // Re-enable button
+                        submitButton.textContent = 'Send';
+                    });
+            });
+
+
+            // === GENERAL MODAL CLOSING LOGIC (No changes here) ===
+            const allModals = document.querySelectorAll('.modal-overlay');
+            const allCloseBtns = document.querySelectorAll('.modal-close');
+
+            const closeModal = () => {
+                allModals.forEach(modal => modal.classList.remove('active'));
+            }
+
+            allCloseBtns.forEach(btn => btn.addEventListener('click', closeModal));
+            allModals.forEach(modal => {
+                modal.addEventListener('click', (event) => {
+                    if (event.target === modal) closeModal();
+                });
+            });
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape') closeModal();
+            });
+
+            // === STICKY NAV ACTIVE STATE LOGIC (No changes here) ===
+            const navLinks = document.querySelectorAll('.sticky-nav a');
+            const sections = document.querySelectorAll('.content-section');
+            const mainNavHeight = 56;
+            const stickyNavHeight = document.querySelector('.sticky-nav').offsetHeight;
+
+            const observerOptions = {
+                root: null,
+                rootMargin: `-${mainNavHeight + stickyNavHeight}px 0px -50% 0px`
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href').substring(1) === entry.target.id) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>

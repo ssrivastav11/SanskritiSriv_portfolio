@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program Management - Sanskriti Srivastava</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ======================================== */
+        /* === THEME: CREAM, BLACK, & GOLD (NEW) === */
+        /* ======================================== */
+        :root {
+            --bg-white: #fdfdfc;         /* Warm Creamy White */
+            --bg-light-grey: #f4f3f1;    /* Light Beige */
+            --text-dark: #1a1a1a;         /* Soft Black */
+            --text-grey: #5c5c5c;         /* Dark Grey */
+            
+            --accent-gold: #ad8a4c;       
+            --accent-gold-darker: #9a7943; 
+            
+            --accent-red: #941a2f;         /* Cherry Red (Replaces Teal) */
+            --border-light: #e5e5e5;      /* Light Neutral Border */
+            
+            /* === Font Variables === */
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-heading: 'Playfair Display', serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html {
+            /* IMPORTANT: This offsets anchor links to account for the sticky header's height */
+            scroll-padding-top: 150px;
+        }
+        body {
+            font-family: var(--font-body); /* CHANGED */
+            line-height: 1.6;
+            background-color: var(--bg-white);
+            color: var(--text-grey);
+            scroll-behavior: smooth;
+        }
+
+        /* ======================================== */
+        /* === FIXED HEADER STYLES (UPDATED) === */
+        /* ======================================== */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(253, 253, 252, 0.95); /* CHANGED (from --bg-white) */
+            backdrop-filter: blur(15px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.07);
+        }
+
+        /* Header Navigation (Main Site Nav) - styles cleaned up */
+        .main-nav {
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .main-nav-container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { 
+            font-family: var(--font-heading); /* ADDED */
+            font-size: 1.5rem; 
+            font-weight: 700; 
+            color: var(--accent-red); /* CHANGED from --accent-teal */
+            text-decoration: none; 
+        }
+        .back-to-home { text-decoration: none; color: var(--text-dark); font-weight: 500; transition: color 0.3s ease; }
+        .back-to-home:hover { color: var(--accent-red); } /* CHANGED from --accent-teal */
+
+        /* Sub-Navigation - position:sticky removed */
+        .sticky-nav {
+            padding: 1rem 0;
+        }
+        .sticky-nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+        }
+        .sticky-nav a {
+            text-decoration: none;
+            color: var(--text-grey);
+            font-weight: 600;
+            transition: color 0.3s ease, border-bottom-color 0.3s ease;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid transparent;
+        }
+        .sticky-nav a:hover {
+            color: var(--text-dark);
+        }
+        .sticky-nav a.active {
+            color: var(--accent-red); /* CHANGED from --accent-teal */
+            border-bottom-color: var(--accent-red); /* CHANGED from --accent-teal */
+        }
+
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            padding: 4rem 2rem 2rem;
+            background-color: var(--bg-light-grey);
+            border-bottom: 1px solid var(--border-light);
+        }
+        .page-header h1 {
+            font-size: 3rem;
+            color: var(--accent-gold);
+        }
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 1rem auto 0;
+            color: var(--text-grey);
+        }
+
+        /* General Section Styling */
+        .content-section {
+            padding: 4rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .content-section:last-child {
+            border-bottom: none;
+        }
+        .content-section h2 {
+            font-size: 2.2rem;
+            color: var(--text-dark);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        /* Experience Timeline */
+        .timeline { position: relative; }
+        .timeline-item {
+            position: relative;
+            padding: 1.5rem 2rem 1.5rem 4rem;
+            margin-left: 2rem;
+            border-left: 3px solid var(--accent-red); /* CHANGED from --accent-teal */
+        }
+        .timeline-item:not(:last-child) { margin-bottom: 2rem; }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -11px;
+            top: 1.8rem;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: var(--accent-red); /* CHANGED from --accent-teal */
+            border: 3px solid var(--bg-white);
+        }
+        .timeline-item h3 { color: var(--text-dark); font-size: 1.5rem; }
+        .timeline-item h4 { color: var(--accent-gold); font-size: 1.1rem; margin-bottom: 0.5rem; }
+        .timeline-item .date { color: var(--text-grey); font-style: italic; margin-bottom: 1rem; }
+        .timeline-item ul { padding-left: 20px; }
+        .timeline-item li { margin-bottom: 0.5rem; }
+
+        /* Skills Grid (also used for Tools) */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjusted minmax for more items */
+            gap: 1.5rem;
+            text-align: center;
+        }
+        .skill-card {
+            background: var(--bg-light-grey);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-light);
+        }
+        .skill-card i {
+            font-size: 2.5rem;
+            color: var(--accent-red); /* CHANGED from --accent-teal */
+            margin-bottom: 1rem;
+        }
+        .skill-card h4 { font-size: 1.2rem; color: var(--text-dark); }
+
+        /* Awards List */
+        .awards-list .award-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            border-radius: 12px;
+            background: var(--bg-light-grey);
+        }
+        .awards-list .award-item:not(:last-child) { margin-bottom: 1rem; }
+        .award-item i { font-size: 2rem; color: var(--accent-gold); }
+        .award-info h4 { color: var(--text-dark); }
+        .award-info p { font-size: 0.9rem; }
+        
+        /* My Approach Section */
+        .approach-grid {
+            display: grid;
+            /* REVERTED: Back to minmax(300px) to force a 2x2 grid */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 2rem; /* REVERTED: Back to original gap */
+        }
+        .approach-card {
+            text-align: center;
+            /* CHANGE #2: Reduced padding */
+            padding: 2rem 1.5rem; 
+            background: var(--bg-light-grey);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .approach-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+        }
+        .approach-icon {
+            /* CHANGE #2: Reduced icon size */
+            font-size: 2rem;
+            color: var(--accent-red);
+            margin-bottom: 1rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--bg-white);
+            /* CHANGE #2: Reduced icon background size */
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+        }
+        .approach-card h3 {
+            color: var(--text-dark);
+            /* CHANGE #2: Reduced font size */
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Impacts Delivered Cards */
+        .impact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem; /* Reduced gap */
+        }
+        .impact-card {
+            background: linear-gradient(135deg, var(--accent-red), #7a1526); 
+            color: white;
+            /* CHANGE #3: Reduced padding */
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+        }
+        .impact-card .impact-number {
+            /* CHANGE #3: Reduced font size */
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            line-height: 1;
+        }
+        .impact-card .impact-description {
+            /* CHANGE #3: Reduced font size */
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+            opacity: 0.9;
+        }
+        
+        /* Testimonial Card Styling (reused from index) */
+        .testimonial-card { background: var(--bg-light-grey); padding: 2rem; border-radius: 16px; border: 1px solid var(--border-light); }
+        .testimonial-header { display:flex; align-items:center; gap:1rem; margin-bottom:1rem; }
+        .testimonial-photo { width:50px; height:50px; border-radius:50%; object-fit:cover; }
+        .testimonial-info h5 { font-weight:600; color: var(--text-dark); }
+        .testimonial-info p { font-size:0.9rem; color: var(--text-grey); }
+        .testimonial-text { color: var(--text-grey); font-style:italic; }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            background-color: var(--bg-light-grey);
+            padding: 4rem 2rem;
+            max-width: 100%; /* Make it full-width */
+        }
+        .cta-section h2 {
+            color: var(--text-dark);
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+        .cta-section p { max-width: 600px; margin: 0 auto 2rem; }
+        
+        /* CHANGE #1: Added container for buttons */
+        .cta-buttons-container {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap; /* Allow buttons to wrap on small screens */
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-gold);
+            color: var(--bg-white);
+            text-decoration: none;
+            padding: 1rem 2.5rem;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(173, 138, 76, 0.3);
+            border: 2px solid var(--accent-gold); /* Added for consistency */
+        }
+        .cta-button:hover {
+            background: var(--accent-gold-darker);
+            border-color: var(--accent-gold-darker);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(173, 138, 76, 0.4);
+        }
+
+        /* CHANGE #1: Style for the new secondary button */
+        .cta-button.cta-button-secondary {
+            background: transparent;
+            color: var(--accent-gold);
+            border: 2px solid var(--accent-gold);
+            box-shadow: none;
+        }
+        .cta-button.cta-button-secondary:hover {
+            background: var(--accent-gold);
+            color: var(--bg-white);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(173, 138, 76, 0.4);
+        }
+
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            html { scroll-padding-top: 200px; } /* Increased offset for wrapped nav */
+            .sticky-nav-container { 
+                gap: 1rem; 
+                flex-wrap: wrap; 
+                justify-content: center; 
+                padding: 0 1rem; /* Added padding */
+            }
+            .sticky-nav a { font-size: 0.9rem; }
+            .timeline-item { padding: 1rem 1rem 1rem 2.5rem; margin-left: 1rem; }
+            /* Ensure approach cards stack neatly */
+            .approach-grid { grid-template-columns: 1fr; }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <div class="main-nav-container">
+                <a href="index.html" class="logo">Sanskriti Srivastava</a>
+                <a href="portfolio.html#services" class="back-to-home"><i class="fas fa-arrow-left"></i> Back to Home</a>
+            </div>
+        </nav>
+        <nav class="sticky-nav" id="stickyNav">
+            <div class="sticky-nav-container">
+                <a href="#experience" class="active">Experience</a>
+                <a href="#skills">Skills</a>
+                <a href="#tools">Tools</a>
+                <a href="#certifications">Awards</a>
+                <a href="#my-approach">My Approach</a>
+                <a href="#impacts">Impacts</a>
+                <a href="#testimonials">Testimonials</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="page-header">
+            <h1>Program Management</h1>
+        </div>
+
+        <section id="experience" class="content-section">
+            <h2>Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3> Program Manager & Community Lead (Internship)</h3>
+                    <h4>AlgoZenith Technologies Private Limited</h4>
+                    <p class="date">June 2025 - Present </p>
+                    <ul>
+                        <li>Promoted to lead the AZ CCP program across 100+ colleges, managing community operations and engagement for student partners across India.</li>
+                        <li>Optimized workflows and documentation using Notion, Slack, and Google Workspace, reducing manual effort by 40% and improving communication efficiency by 50%.</li>
+                        <li>Owned complete program lifecycle — from recruitment, onboarding, and training to engagement and retention, maintaining a 90%+ active participation rate.</li>
+                        <li>Established data-driven feedback loops, leveraging surveys and insights to continuously refine community programs and improve satisfaction scores.</li>
+                    </ul>
+                </div>
+                <div class="timeline-item">
+                    <h3>Associate Program Manager (Internship)</h3>
+                    <h4>AlgoZenith Technologies Private Limited</h4>
+                    <p class="date">Jan 2024 - May 2025</p>
+                    <ul>
+                        <li>Executed end-to-end community campaigns, leveraging strong communication, coordination, and stakeholder management skills to ensure on-time delivery and team accountability.</li>
+                        <li>Designed and led social media initiatives that achieved 600+ followers within 24 hours, demonstrating strong expertise in growth strategy, digital engagement, and performance analytics.</li>
+                        <li>Streamlined data tracking and logistics using Excel and Google Sheets automation, improving process efficiency and cross-team communication speed by 50% while maintaining zero-error operations.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="content-section">
+            <h2>Core Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card"><i class="fas fa-sitemap"></i><h4>Strategic Planning</h4></div>
+                <div class="skill-card"><i class="fas fa-chart-bar"></i><h4>Data-Driven Decision Making</h4></div>
+                <div class="skill-card"><i class="fas fa-users"></i><h4>Stakeholder Engagement</h4></div>
+                <div class="skill-card"><i class="fas fa-chart-line"></i><h4>Growth <br> Marketing</h4></div>
+                <div class="skill-card"><i class="fas fa-cogs"></i><h4>Operational Efficiency & Scalability</h4></div>
+                <div class="skill-card"><i class="fas fa-lightbulb"></i><h4>Leadership & Innovation</h4></div>
+            </div>
+        </section>
+
+        <section id="tools" class="content-section">
+            <h2>Tools & Platforms</h2>
+            <div class="skills-grid">
+                <div class="skill-card"><i class="fab fa-slack"></i><h4>Slack</h4></div>
+                <div class="skill-card"><i class="fas fa-tasks"></i><h4>ClickUp</h4></div>
+                <div class="skill-card"><i class="fab fa-google-drive"></i><h4>Google Workspace & Automation</h4></div>
+                <div class="skill-card"><i class="fas fa-clipboard-list"></i><h4>Notion</h4></div>
+            </div>
+        </section>
+
+
+        <section id="certifications" class="content-section">
+            <h2>Certifications & Awards</h2>
+            <div class="awards-list">
+                <div class="award-item">
+                    <i class="fas fa-trophy"></i>
+                    <div class="award-info">
+                        <h4>Google Project Management Certification</h4>
+                        <p>Currently Pursuing</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="my-approach" class="content-section">
+            <h2>My Approach</h2>
+            <div class="approach-grid">
+                <div class="approach-card">
+                    <div class="approach-icon"><i class="fas fa-search"></i></div>
+                    <h3>1. Discover & Empathize</h3>
+                    <p>I begin by diving deep into the problem space, conducting user research and stakeholder interviews to understand the core needs and pain points.</p>
+                </div>
+                <div class="approach-card">
+                    <div class="approach-icon"><i class="fas fa-map-signs"></i></div>
+                    <h3>2. Define & Strategize</h3>
+                    <p>With clear insights, I define the program's vision, objectives, and key results (OKRs). This phase is all about creating a strategic roadmap for success.</p>
+                </div>
+                <div class="approach-card">
+                    <div class="approach-icon"><i class="fas fa-cogs"></i></div>
+                    <h3>3. Execute & Collaborate</h3>
+                    <p>I drive execution through creative methodologies, fostering a collaborative environment where cross-functional teams are aligned and empowered to deliver.</p>
+                </div>
+                <div class="approach-card">
+                    <div class="approach-icon"><i class="fas fa-chart-pie"></i></div>
+                    <h3>4. Measure & Iterate</h3>
+                    <p>Success is measured against our defined goals. I continuously monitor program performance, gather feedback, and iterate to optimize outcomes.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="impacts" class="content-section">
+            <h2>Impacts Delivered</h2>
+            <div class="impact-grid">
+                <div class="impact-card">
+                    <div class="impact-number">80%+</div>
+                    <div class="impact-description">Active community participation rate maintained.</div>
+                </div>
+                 <div class="impact-card">
+                    <div class="impact-number">50%</div>
+                    <div class="impact-description">Increase in communication & process efficiency.</div>
+                </div>
+                 <div class="impact-card">
+                    <div class="impact-number">40%</div>
+                    <div class="impact-description">Reduction in manual effort via workflow & documentation automation.</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="content-section">
+            <h2>Testimonials</h2>
+            <div class="testimonial-card" style="margin-bottom: 1rem;">
+                <div class="testimonial-header">
+                    <img src="images/VivekGupta .png" alt="Client" class="testimonial-photo">
+                    <div class="testimonial-info">
+                        <h5>Vivek Gupta</h5>
+                        <p>Co-Founder & CEO, AlgoZenith Technologies</p>
+                    </div>
+                </div>
+                <p class="testimonial-text">"Exceptional program management skills. Delivered our complex project 2 weeks ahead of schedule while maintaining quality standards."</p>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <img src="images/PrayagDwivedi.png" alt="Client" class="testimonial-photo">
+                    <div class="testimonial-info">
+                        <h5>Prayag Dwivedi</h5>
+                        <p>Community Manager, AlgoZenith Technologies</p>
+                    </div>
+                </div>
+                <p class="testimonial-text">Sanskriti Srivastava is a highly disciplined and innovative  Program Manager who takes complete ownership of her work. Her creativity, leadership, and problem-solving skills consistently drive projects to success, making her an invaluable asset to any team."</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <section class="cta-section">
+            <h2>Ready to build something great?</h2>
+            
+            <div class="cta-buttons-container">
+                <a href="mailto:sanskritisrivastav2@gmail.com" class="cta-button">Get in Touch</a>
+                <a href="Sanskriti_Srivastava_PM_Resume.pdf" class="cta-button cta-button-secondary" download>Download Resume</a>
+            </div>
+
+        </section>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.sticky-nav a');
+            const sections = document.querySelectorAll('.content-section');
+            
+            let isClickScrolling = false;
+
+            // --- 1. The Observer (for passive scrolling) ---
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.2 // 20% visibility
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                // If a click-scroll is in progress, do nothing.
+                if (isClickScrolling) {
+                    return;
+                }
+                
+                // This logic only runs if we are NOT click-scrolling
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href').substring(1) === entry.target.id) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // --- 2. The Click Handler (for user intent) ---
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    // Set the flag to true to "pause" the observer
+                    isClickScrolling = true;
+
+                    // Manually set the active class on the link that was clicked
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    e.currentTarget.classList.add('active');
+                });
+            });
+
+            // --- 3. The "Un-pause" Listeners (Robust Fix) ---
+
+            // A) When the smooth-scroll (from a click) finishes
+            document.addEventListener('scrollend', () => {
+                isClickScrolling = false;
+            });
+
+            // B) FALLBACK: When the user scrolls manually (wheel)
+            // This fixes the bug where clicking an already-active link
+            // would permanently pause the observer.
+            document.addEventListener('wheel', () => {
+                isClickScrolling = false;
+            });
+            
+            // C) FALLBACK: When the user scrolls manually (touch)
+            document.addEventListener('touchmove', () => {
+                isClickScrolling = false;
+            });
+        });
+    </script>
+</body>
+</html>

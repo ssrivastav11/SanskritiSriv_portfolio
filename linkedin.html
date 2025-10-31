@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkedIn Profile Optimization Services - Sanskriti Srivastava</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ======================================== */
+        /* === THEME: TEAL, WHITE, & GOLD === */
+        /* ======================================== */
+        :root {
+            --bg-white: #ffffff;
+            --bg-light-grey: #f8f9fa;
+            --text-dark: #212529;
+            --text-grey: #6c757d;
+            --accent-teal: #1abc9c;
+            --accent-teal-darker: #16a085;
+            --accent-gold: #cda434;
+            --border-light: #e9ecef;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            background-color: var(--bg-white);
+            color: var(--text-grey);
+        }
+        
+        /* ======================================== */
+        /* === HEADER & NAVIGATION === */
+        /* ======================================== */
+        header {
+            position: sticky; top: 0; z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.07);
+        }
+        .main-nav-container { max-width: 1200px; margin: 0 auto; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; height: 60px; }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--accent-teal); text-decoration: none; }
+        .back-to-home { text-decoration: none; color: var(--text-dark); font-weight: 500; transition: color 0.3s ease; }
+        .back-to-home:hover { color: var(--accent-teal); }
+
+        .page-header {
+            text-align: center; padding: 4rem 2rem 3rem; background-color: var(--bg-white);
+            border-bottom: 1px solid var(--border-light);
+        }
+        .page-header h1 { font-size: 3rem; color: var(--accent-gold); }
+        .page-header p { font-size: 1.2rem; max-width: 700px; margin: 1rem auto 0; color: var(--text-grey); }
+
+        .sticky-nav {
+            position: sticky; top: 60px; background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px); z-index: 999; padding: 1rem 0;
+            border-bottom: 1px solid var(--border-light); box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+        .sticky-nav-container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
+        .sticky-nav a { text-decoration: none; color: var(--text-grey); font-weight: 600; transition: color 0.3s ease, border-bottom-color 0.3s ease; padding-bottom: 0.5rem; border-bottom: 2px solid transparent; }
+        .sticky-nav a:hover { color: var(--text-dark); }
+        .sticky-nav a.active { color: var(--accent-teal); border-bottom-color: var(--accent-teal); }
+
+        /* ======================================== */
+        /* === CONTENT SECTIONS === */
+        /* ======================================== */
+        .content-section { padding: 4rem 0; max-width: 1200px; margin: 0 auto; border-bottom: 1px solid var(--border-light); }
+        .content-section:last-of-type { border-bottom: none; }
+        
+        .section-header { text-align: center; margin-bottom: 3rem; padding: 0 2rem; }
+        .section-header h2 { font-size: 2.5rem; color: var(--text-dark); margin-bottom: 0.5rem; }
+        .section-header p { color: var(--text-grey); max-width: 600px; margin: 0 auto; }
+
+        /* Horizontal Scrolling Tiles */
+        .services-carousel { display: flex; overflow-x: auto; gap: 1.5rem; padding: 1rem 2rem; scroll-snap-type: x mandatory; scrollbar-width: none; -ms-overflow-style: none; }
+        .services-carousel::-webkit-scrollbar { display: none; }
+        
+        .service-tile {
+            flex: 0 0 280px; background: var(--bg-white); border: 1px solid var(--border-light);
+            border-radius: 16px; padding: 1.5rem; box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            scroll-snap-align: start; text-align: left;
+        }
+        .service-tile i { font-size: 1.8rem; color: var(--accent-teal); margin-bottom: 1rem; }
+        .service-tile h3 { color: var(--text-dark); font-size: 1.2rem; margin-bottom: 0.5rem; }
+        .service-tile p { font-size: 0.95rem; }
+
+        /* ======================================== */
+        /* === PACKAGES SECTION === */
+        /* ======================================== */
+        #packages { background-color: var(--bg-light-grey); padding: 4rem 2rem; }
+        .packages-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto; }
+        
+        .package-card {
+            background: var(--bg-white); border-radius: 16px; border: 1px solid var(--border-light);
+            padding: 2rem; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            display: flex; flex-direction: column; transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .package-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(26, 188, 156, 0.15); }
+        .package-card .best-for { background: var(--accent-gold); color: white; padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; display: inline-block; margin-bottom: 1rem; }
+        .package-card h3 { font-size: 2rem; color: var(--text-dark); margin-bottom: 0.5rem; }
+        .package-card ul { list-style: none; margin: 1.5rem 0; padding: 0; text-align: left; flex-grow: 1; }
+        .package-card ul li { padding: 0.5rem 0; display: flex; align-items: center; gap: 0.75rem; border-bottom: 1px solid var(--border-light); }
+        .package-card ul li i { color: var(--accent-teal); }
+        .book-service-btn {
+            background: var(--accent-teal); color: var(--bg-white); text-decoration: none; padding: 0.75rem 1.5rem;
+            border-radius: 8px; font-weight: 600; transition: all 0.3s ease; border: none; cursor: pointer; width: 100%;
+        }
+        .book-service-btn:hover { background: var(--accent-teal-darker); }
+
+        /* ======================================== */
+        /* === TESTIMONIALS SECTION === */
+        /* ======================================== */
+        .testimonial-carousel { display: flex; overflow-x: auto; gap: 1.5rem; padding: 1rem 2rem; scroll-snap-type: x mandatory; scrollbar-width: none; }
+        .testimonial-carousel::-webkit-scrollbar { display: none; }
+        
+        .testimonial-card {
+            flex: 0 0 350px; background: var(--bg-light-grey); border: 1px solid transparent;
+            border-radius: 16px; padding: 2rem; scroll-snap-align: start;
+        }
+        .testimonial-card .quote { font-style: italic; margin-bottom: 1rem; position: relative; }
+        .testimonial-card .quote::before { content: '“'; font-size: 3rem; color: var(--accent-teal); position: absolute; top: -1.5rem; left: -1rem; opacity: 0.2; }
+        .testimonial-card .author-info { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+        .testimonial-card .author-info img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; }
+        .testimonial-card .author-info h4 { margin: 0; color: var(--text-dark); }
+        .testimonial-card .author-info p { margin: 0; font-size: 0.9rem; }
+        .testimonial-card .impact { background: var(--bg-white); padding: 1rem; border-radius: 8px; border-left: 3px solid var(--accent-gold); }
+        .testimonial-card .impact h5 { color: var(--accent-gold); margin-bottom: 0.25rem; }
+        
+        /* ======================================== */
+        /* === FINAL CTA & MODAL === */
+        /* ======================================== */
+        #final-cta { text-align: center; padding: 4rem 2rem; }
+        #final-cta h3 { font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--text-dark); }
+        #final-cta p { margin-bottom: 1.5rem; }
+
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(33, 37, 41, 0.7); backdrop-filter: blur(5px); display: flex; align-items: center; justify-content: center; z-index: 2000; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+        .modal-content { background: var(--bg-white); padding: 2.5rem; border-radius: 16px; width: 90%; max-width: 500px; max-height: 90vh; overflow-y: auto; position: relative; transform: scale(0.95); transition: transform 0.3s ease; }
+        .modal-overlay.active .modal-content { transform: scale(1); }
+        .modal-close { position: absolute; top: 1rem; right: 1.5rem; font-size: 2rem; color: var(--text-grey); cursor: pointer; }
+        .booking-form .form-group { margin-bottom: 1rem; }
+        .booking-form label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-dark); }
+        .booking-form input, .booking-form textarea, .booking-form select { width: 100%; padding: 0.75rem; border: 2px solid var(--border-light); border-radius: 8px; font-size: 1rem; }
+        .booking-form button { width: 100%; padding: 0.85rem; background: var(--accent-teal); color: white; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 600; cursor: pointer; }
+        .form-success-message { text-align: center; padding: 2rem; }
+
+        footer { text-align: center; background-color: var(--bg-light-grey); padding: 4rem 2rem; }
+        footer h2 { color: var(--text-dark); font-size: 2.2rem; margin-bottom: 1rem; }
+        footer p { max-width: 600px; margin: 0 auto 2rem; }
+        .cta-button { display: inline-block; background: var(--accent-gold); color: var(--bg-white); text-decoration: none; padding: 1rem 2.5rem; border-radius: 12px; font-size: 1.1rem; font-weight: 600; }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <div class="main-nav-container">
+                <a href="landingpage.html" class="logo">Sanskriti Srivastava</a>
+                <a href="portfolio.html#freelance" class="back-to-home"><i class="fas fa-arrow-left"></i> Back to Home</a>
+            </div>
+        </nav>
+        <nav class="sticky-nav">
+            <div class="sticky-nav-container">
+                <a href="#services" class="active">Services</a>
+                <a href="#packages">Packages</a>
+                <a href="#testimonials">Testimonials</a>
+                <a href="#final-cta">Book Now</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="page-header">
+            <h1>LinkedIn Profile Optimization</h1>
+        </div>
+
+        <section class="content-section" id="services">
+            <div class="section-header">
+                <h2>What I Offer</h2>
+            </div>
+            <div class="services-carousel">
+                <div class="service-tile"> <i class="fas fa-search"></i> <h3>Profile Audit</h3> <p>A detailed review of your profile’s strengths, weaknesses, and opportunities.</p> </div>
+                <div class="service-tile"> <i class="fas fa-key"></i> <h3>Keyword Optimization</h3> <p>Integrating industry keywords to ensure recruiters and clients find you easily.</p> </div>
+                <div class="service-tile"> <i class="fas fa-pen-fancy"></i> <h3>Headline & About Revamp</h3> <p>Crafting a powerful, story-driven summary that reflects your unique strengths.</p> </div>
+                <div class="service-tile"> <i class="fas fa-briefcase"></i> <h3>Experience Enhancement</h3> <p>Transforming bullet points into quantifiable achievements and impact stories.</p> </div>
+                <div class="service-tile"> <i class="fas fa-image"></i> <h3>Banner & Profile Visuals</h3> <p>Designing a cohesive banner and recommending photo updates to align with your brand.</p> </div>
+                <div class="service-tile"> <i class="fas fa-star"></i> <h3>Featured Section Setup</h3> <p>Curating impactful projects, media, and posts to highlight your expertise.</p> </div>
+                <div class="service-tile"> <i class="fas fa-feather-alt"></i> <h3>Weekly Post Writing</h3> <p>Boosting engagement and thought leadership with weekly, high-quality content.</p> </div>
+                <div class="service-tile"> <i class="fas fa-lightbulb"></i> <h3>Content Strategy</h3> <p>Optional guidance to build a sustainable content plan for long-term growth.</p> </div>
+            </div>
+        </section>
+
+        <section id="packages">
+            <div class="section-header">
+                <h2>Choose Your Package</h2>
+                <p>Select a package that best fits your career goals and current needs.</p>
+            </div>
+            <div class="packages-grid">
+                <div class="package-card">
+                    <span class="best-for">Students / Job Seekers</span>
+                    <h3>Basic</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i>Detailed Profile Audit Report</li>
+                        <li><i class="fas fa-check-circle"></i>Industry Keyword Plan</li>
+                        <li><i class="fas fa-check-circle"></i>Actionable Recommendations</li>
+                    </ul>
+                    <button class="book-service-btn" data-service="Basic Package">Book Service</button>
+                </div>
+                <div class="package-card">
+                    <span class="best-for">Working Professionals</span>
+                    <h3>Pro</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i>Everything in Basic, plus:</li>
+                        <li><i class="fas fa-check-circle"></i>Full Headline & About Section Rewrite</li>
+                        <li><i class="fas fa-check-circle"></i>Complete Experience Section Revamp</li>
+                        <li><i class="fas fa-check-circle"></i>2 Rounds of Revisions</li>
+                    </ul>
+                    <button class="book-service-btn" data-service="Pro Package">Book Service</button>
+                </div>
+                <div class="package-card">
+                    <span class="best-for">Creators / Thought Leaders</span>
+                    <h3>Premium</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i>Everything in Pro, plus:</li>
+                        <li><i class="fas fa-check-circle"></i>Custom Banner & Visual Design</li>
+                        <li><i class="fas fa-check-circle"></i>Featured Section Curation</li>
+                        <li><i class="fas fa-check-circle"></i>4 Written LinkedIn Posts/Month</li>
+                    </ul>
+                    <button class="book-service-btn" data-service="Premium Package">Book Service</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section" id="testimonials">
+            <div class="section-header">
+                <h2>Success Stories</h2>
+                <p>Real results from professionals who have leveled-up their LinkedIn presence.</p>
+            </div>
+            <div class="testimonial-carousel">
+                <div class="testimonial-card">
+                    <p class="quote">The new profile captured my professional journey perfectly. I started getting contacted by relevant recruiters within a week!</p>
+                    <div class="author-info">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=50&h=50&fit=crop&crop=face" alt="Client">
+                        <div><h4>David L.</h4><p>Software Engineer</p></div>
+                    </div>
+                    <div class="impact"><h5>Quantified Impact</h5><p>+300% increase in profile views and a 50% rise in connection requests from recruiters.</p></div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="quote">I had no idea how to present myself as a thought leader. The content strategy and weekly posts were a game-changer.</p>
+                    <div class="author-info">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=50&h=50&fit=crop&crop=face" alt="Client">
+                        <div><h4>Emily R.</h4><p>Marketing Consultant</p></div>
+                    </div>
+                    <div class="impact"><h5>Quantified Impact</h5><p>Generated 5 high-quality inbound leads in the first month from LinkedIn content.</p></div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="quote">As a recent graduate, my profile looked generic. The audit and rewrite helped me stand out and land my first job.</p>
+                    <div class="author-info">
+                        <img src="https://images.unsplash.com/photo-1557862921-37829c790f19?w=50&h=50&fit=crop&crop=face" alt="Client">
+                        <div><h4>James C.</h4><p>Recent Graduate</p></div>
+                    </div>
+                    <div class="impact"><h5>Quantified Impact</h5><p>Received 3 interview offers directly through LinkedIn within two weeks of the profile update.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="final-cta">
+            <h3>Not sure about a package?</h3>
+            <p>Book just an individual service, and I'll get back to you with prices.</p>
+            <button class="book-service-btn" data-service="Individual Service Inquiry" style="width: auto; padding: 0.75rem 2rem;">Book an Individual Service</button>
+        </section>
+    </main>
+    
+    <div class="modal-overlay" id="booking-modal">
+        <div class="modal-content">
+             <span class="modal-close">&times;</span>
+             <h2>Book a Service</h2>
+             <div id="booking-modal-content">
+                <form id="booking-form" class="booking-form">
+                    <div class="form-group"><label for="name">Your Name</label><input type="text" id="name" name="name" required></div>
+                    <div class="form-group"><label for="email">Your Email</label><input type="email" id="email" name="email" required></div>
+                    <div class="form-group"><label for="linkedin">Your LinkedIn Profile URL</label><input type="url" id="linkedin" name="linkedin" required></div>
+                    <div class="form-group">
+                        <label for="service-selection">Service / Package</label>
+                        <select id="service-selection" name="service" required>
+                            <optgroup label="Packages">
+                                <option value="Basic Package">Basic Package</option>
+                                <option value="Pro Package">Pro Package</option>
+                                <option value="Premium Package">Premium Package</option>
+                            </optgroup>
+                            <optgroup label="Individual Services">
+                                <option value="Individual Service Inquiry">Individual Service Inquiry</option>
+                                <option value="Profile Audit">Profile Audit</option>
+                                <option value="Keyword Optimization">Keyword Optimization</option>
+                                <option value="Headline & About Revamp">Headline & About Revamp</option>
+                                <option value="Experience Enhancement">Experience Enhancement</option>
+                                <option value="Banner & Profile Visuals">Banner & Profile Visuals</option>
+                                <option value="Featured Section Setup">Featured Section Setup</option>
+                                <option value="Weekly Post Writing">Weekly Post Writing</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div class="form-group"><label for="message">Any extra message? (Optional)</label><textarea id="message" name="message"></textarea></div>
+                    <button type="submit">Send Inquiry</button>
+                </form>
+                <div id="form-success" class="form-success-message" style="display: none;">
+                    <h3>Thank you for your interest!</h3>
+                    <p>I will review your details and reach out via email within 24 hours.</p>
+                </div>
+             </div>
+        </div>
+    </div>
+
+    <footer>
+        <h2>Ready to build your brand?</h2>
+        <p>Let's collaborate to create a LinkedIn profile that opens doors and builds connections.</p>
+        <a href="landingpage.html#contact" class="cta-button">Get in Touch</a>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const bookingBtns = document.querySelectorAll('.book-service-btn');
+            const bookingModal = document.getElementById('booking-modal');
+            const serviceSelection = document.getElementById('service-selection');
+            const bookingForm = document.getElementById('booking-form');
+            const formSuccessMessage = document.getElementById('form-success');
+            
+            bookingBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const serviceName = btn.dataset.service;
+                    bookingForm.reset(); 
+                    serviceSelection.value = serviceName;
+                    bookingForm.style.display = 'block';
+                    formSuccessMessage.style.display = 'none';
+                    bookingModal.classList.add('active');
+                });
+            });
+
+            // === FORM SUBMISSION LOGIC (Connect to your Google Apps Script) ===
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbzRzn14h2M-yAP-5Pkqttbiedf0z0inaHOF05ZutqLMtf3NkW0R3G8-TzvEexycEggB/exec'; // Replace with your script URL
+
+            bookingForm.addEventListener('submit', e => {
+                e.preventDefault();
+                const submitButton = bookingForm.querySelector('button[type="submit"]');
+                submitButton.disabled = true;
+                submitButton.textContent = 'Sending...';
+
+                fetch(scriptURL, { method: 'POST', body: new FormData(bookingForm)})
+                    .then(response => {
+                        console.log('Success!', response);
+                        bookingForm.style.display = 'none';
+                        formSuccessMessage.style.display = 'block';
+                        submitButton.disabled = false;
+                        submitButton.textContent = 'Send Inquiry';
+                    })
+                    .catch(error => {
+                        console.error('Error!', error.message);
+                        alert('An error occurred. Please try again.');
+                        submitButton.disabled = false;
+                        submitButton.textContent = 'Send Inquiry';
+                    });
+            });
+
+            // === GENERAL MODAL CLOSING LOGIC ===
+            const allModals = document.querySelectorAll('.modal-overlay');
+            const allCloseBtns = document.querySelectorAll('.modal-close');
+            const closeModal = () => allModals.forEach(modal => modal.classList.remove('active'));
+            allCloseBtns.forEach(btn => btn.addEventListener('click', closeModal));
+            allModals.forEach(modal => modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); }));
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+            // === STICKY NAV ACTIVE STATE LOGIC ===
+            const navLinks = document.querySelectorAll('.sticky-nav a');
+            const sections = document.querySelectorAll('.content-section, #packages, #testimonials, #final-cta');
+            const observerOptions = { root: null, rootMargin: "-100px 0px -50% 0px" };
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const activeId = entry.target.id;
+                        navLinks.forEach(link => {
+                            link.classList.toggle('active', link.getAttribute('href') === `#${activeId}`);
+                        });
+                    }
+                });
+            }, observerOptions);
+            sections.forEach(section => observer.observe(section));
+        });
+    </script>
+</body>
+</html>
